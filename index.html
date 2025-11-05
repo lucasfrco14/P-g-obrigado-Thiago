@@ -4,10 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Obrigado!</title>
-  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✅</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; }
+    * { 
+      box-sizing: border-box; 
+    }
 
     html, body {
       margin: 0;
@@ -15,6 +17,7 @@
       width: 100%;
       height: 100%;
       font-family: 'Inter', sans-serif;
+      /* Certifique-se de que sua imagem de fundo exista */
       background: url("background.png") no-repeat center center fixed;
       background-size: cover;
       display: flex;
@@ -23,39 +26,79 @@
       align-items: center;
       color: white;
       text-align: center;
+      overflow: hidden; /* Evita barras de rolagem durante a animação */
     }
 
     .message {
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 30px;
-      border-radius: 12px;
-      margin-bottom: 40px;
-      max-width: 90%;
-      animation: fadeIn 0.8s ease-in-out;
+      /* Efeito de Vidro (Glassmorphism) */
+      background-color: rgba(30, 30, 30, 0.45); /* Fundo escuro semitransparente */
+      backdrop-filter: blur(12px) saturate(150%); /* O "fosco" do vidro */
+      -webkit-backdrop-filter: blur(12px) saturate(150%); /* Suporte para Safari */
+      
+      border: 1px solid rgba(255, 255, 255, 0.1); /* Borda sutil */
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Sombra suave para dar profundidade */
+      
+      padding: 40px;
+      border-radius: 16px; /* Bordas mais arredondadas */
+      max-width: 550px;
+      width: 90%;
+      
+      /* Animação de entrada do card */
+      opacity: 0;
+      transform: scale(0.95);
+      animation: fadeIn 0.6s ease-out 0.1s forwards;
+    }
+
+    .check-icon {
+      /* Estilo do ícone */
+      width: 60px;
+      height: 60px;
+      color: #34D399; /* Um tom de verde moderno */
+      margin-bottom: 15px;
+
+      /* Animação do ícone */
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.5s ease-out 0.4s forwards;
     }
 
     .message h2 {
-      font-size: 2.4rem;
+      font-size: 2.5rem;
       font-weight: 700;
-      margin-bottom: 10px;
+      margin: 0 0 12px 0;
+
+      /* Animação do Título */
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.5s ease-out 0.6s forwards;
     }
 
     .message p {
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       font-weight: 400;
       margin: 0;
+      color: rgba(255, 255, 255, 0.85); /* Cor levemente mais suave */
+
+      /* Animação do Parágrafo */
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.5s ease-out 0.8s forwards;
     }
 
+    /* Ajustes para telas menores */
     @media (max-width: 768px) {
-      .message h2 { font-size: 1.7rem; }
-      .message p { font-size: 1rem; }
+      .message { padding: 30px; }
+      .message h2 { font-size: 2rem; }
+      .message p { font-size: 1.1rem; }
     }
 
+    /* Animação de entrada do card */
     @keyframes fadeIn {
       from { opacity: 0; transform: scale(0.95); }
       to { opacity: 1; transform: scale(1); }
     }
 
+    /* Animação de "subir" para os textos e ícone */
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -63,10 +106,18 @@
   </style>
 </head>
 <body>
+
   <div class="message">
+    
+    <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+
     <h2>Obrigado!</h2>
     <p>Entraremos em contato o mais rápido possível.</p>
   </div>
+
 </body>
 </html>
+
 
